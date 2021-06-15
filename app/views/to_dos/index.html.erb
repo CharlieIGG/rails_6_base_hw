@@ -1,0 +1,11 @@
+<h1>To-Dos with Hotwire!</h1>
+
+<%= turbo_stream_from "to_dos" %>
+
+<%= turbo_frame_tag "to_do_form" do %>
+  <%= render 'form', to_do: @to_do %>
+<% end %>
+
+<%= turbo_frame_tag "to_dos" do %>
+  <%= render @to_dos %>
+<% end %>

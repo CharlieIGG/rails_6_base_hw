@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Myapp</title>
+    <title>To-Dos with Hotwire</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+    <%= stylesheet_pack_tag "application" %>
     <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
     <%= yield :head %>
-    <%= turbo_include_tags %>
+    <%= javascript_pack_tag "turbo", type: "module" %>
   </head>
 
   <body>
