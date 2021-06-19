@@ -1,27 +1,15 @@
-<%= form_with(model: to_do) do |form| %>
-  <% if to_do.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(to_do.errors.count, "error") %> prohibited this to_do from being saved:</h2>
-
-      <ul>
-        <% to_do.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%= turbo_frame_tag "to_do_form" do %>
+  <%= form_with(model: to_do, id: dom_id(to_do)) do |form| %>
+    <div class="mb-3">
+      <div class="input-group">
+        <%= form.text_field :title, class: "form-control", placeholder: "Add a task here. Press Enter to save.", autofocus: true %>
+        <%= form.submit class: "btn btn-primary"  %>
+      </div>
+      <% to_do.errors.each do |error| %>
+        <div class="form-text text-danger">
+          <%= error.full_message %>
+        </div>
+      <% end %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :done %>
-    <%= form.check_box :done %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

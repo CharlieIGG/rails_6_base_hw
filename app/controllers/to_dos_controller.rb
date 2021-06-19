@@ -3,7 +3,7 @@ class ToDosController < ApplicationController
 
   # GET /to_dos or /to_dos.json
   def index
-    @to_dos = ToDo.all
+    @to_dos = ToDo.all.order(:done, :created_at)
     @to_do = ToDo.new
   end
 
@@ -29,12 +29,12 @@ class ToDosController < ApplicationController
         format.html { redirect_to to_dos_path, notice: "To do was successfully created." }
         format.json { render :show, status: :created, location: @to_do }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @to_do.errors, status: :unprocessable_entity }
         format.turbo_stream do
           render turbo_stream: turbo_stream.replace(@to_do, partial: 'to_dos/form '),
                  locals: { to_do: @to_do }
         end
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @to_do.errors, status: :unprocessable_entity }
       end
     end
   end

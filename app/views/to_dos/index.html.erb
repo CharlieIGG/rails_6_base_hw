@@ -1,11 +1,18 @@
-<h1>To-Dos with Hotwire!</h1>
+<div class="container d-flex justify-content-center align-items-center flex-column full-height">
+  <h1 class="mb-5">To-Dos with Hotwire!</h1>
 
-<%= turbo_stream_from "to_dos" %>
+  <%= turbo_stream_from "to_dos" %>
 
-<%= turbo_frame_tag "to_do_form" do %>
-  <%= render 'form', to_do: @to_do %>
-<% end %>
-
-<%= turbo_frame_tag "to_dos" do %>
-  <%= render @to_dos %>
-<% end %>
+  <div class="w-50">
+    <%= render 'form', to_do: @to_do %>
+  </div>
+  <div class="card align-self-stretch min-vw-50 mx-5">
+    <div class="card-body">
+    <%= turbo_frame_tag "to_dos" do %>
+      <ul class="list-group">
+        <%= render @to_dos %>
+      </ul>
+    <% end %>
+    </div>
+  </div>
+</div>
