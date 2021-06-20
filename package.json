@@ -1,5 +1,5 @@
 {
-  "name": "myapp",
+  "name": "Hotwire Test",
   "private": true,
   "dependencies": {
     "@hotwired/turbo-rails": "^5.2.0",
