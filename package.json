@@ -1,8 +1,8 @@
 {
-  "name": "Hotwire Test",
+  "name": "hotwire_test",
   "private": true,
   "dependencies": {
-    "@hotwired/turbo-rails": "^5.2.0",
+    "@hotwired/turbo-rails": "^7.0.0",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",

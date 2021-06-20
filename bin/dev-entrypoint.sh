@@ -35,7 +35,7 @@ then
   bundle check || bundle install
 
   # 7: Check yarn dependencies, or install:
-  check-dependencies || yarn install
+  yarn install
 
   # 8: Check if the database exists, or setup the database if it doesn't, as it is
   # the case when the project runs for the first time.

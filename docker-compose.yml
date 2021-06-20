@@ -4,6 +4,7 @@ volumes:
   psql-data:
   redis-data:
   app_gem_bundle:
+  node_modules:
 
 services:
   db:
@@ -19,6 +20,8 @@ services:
     entrypoint: ./bin/dev-entrypoint.sh
     volumes:
       - .:/usr/src
+      - node_modules:/usr/src/node_modules
+      - app_gem_bundle:/usr/local/bundle
     ports:
       - "3000:3000"
     environment:
@@ -34,6 +37,8 @@ services:
     command: ./bin/webpack-dev-server
     volumes:
       - .:/usr/src
+      - node_modules:/usr/src/node_modules
+      - app_gem_bundle:/usr/local/bundle
     ports:
       - "3035:3035"
     environment:
