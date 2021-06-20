@@ -8,11 +8,16 @@
   </div>
   <div class="card align-self-stretch min-vw-50 mx-5">
     <div class="card-body">
-    <%= turbo_frame_tag "to_dos" do %>
-      <ul class="list-group">
-        <%= render @to_dos %>
+      <ul class="list-group" id="to_do_list">
+        <%= turbo_frame_tag "to_dos" do %>
+          <%= render @to_dos %>
+        <% end %>
+        <% if @to_dos.empty? %>
+          <div class="d-flex align-items-center justify-content-center py-5" data-controller="to-dos--zero-left-banner">
+            <h4 class="text-secondary">You have <strong class="text-primary">zero</strong> To-Dos left! 🎉🎉🎉</h4>
+          </div>
+        <% end %>
       </ul>
-    <% end %>
     </div>
   </div>
-</div>
+</div
