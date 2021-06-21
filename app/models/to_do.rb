@@ -7,9 +7,11 @@ class ToDo < ApplicationRecord
 
   validates :title, presence: true
 
+  scope :pending, -> { where(done: false) }
+
   def handle_update
     broadcast_remove_to GENERAL_CHANNEL_NAME
-    return broadcast_append_to GENERAL_CHANNEL_NAME if self.done
+    return broadcast_append_to GENERAL_CHANNEL_NAME if done
 
     broadcast_prepend_to GENERAL_CHANNEL_NAME
   end
