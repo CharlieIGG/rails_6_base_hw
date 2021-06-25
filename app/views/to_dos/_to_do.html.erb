@@ -1,9 +1,0 @@
-<%= turbo_frame_tag dom_id(to_do) do %>
-  <li class="list-group-item d-flex justify-content-between" data-done="<%= to_do.done.to_s %>">
-    <%= form_with(model: to_do) do |form| %>
-      <%= form.check_box :done, class: "form-check-input me-3", onchange: "this.form.requestSubmit();" %>
-      <span class="<%= to_do.done ? 'text-decoration-line-through' : '' %>"><%= to_do.title %></span>
-    <% end %>
-    <%= link_to 'Delete', to_do_path(to_do), method: "DELETE", class: "text-danger" %>
-  </li>
-<% end %>
